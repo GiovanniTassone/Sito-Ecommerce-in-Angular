@@ -14,16 +14,16 @@ import { ProductService } from '../service/product.service';
         *ngIf="!loading"
       />
       <div class="card mb-3 mt-5 fw-bold fs-4" *ngIf="loading">
-        <div class="card-header">Dettagli Prodotto</div>
-        <div class="card-body d-flex justify-content-center">
-          <div class="align-self-center me-5">
-            <button
-              class="btn btn-secondary btn-lg d-inline-block"
-              [routerLink]="['/']"
-            >
-              <i class="bi bi-arrow-left-square"></i> Torna ai prodotti
-            </button>
-          </div>
+        <div class="card-header position-relative">
+          <button
+            class="btn btn-secondary btn-lg d-inline-block float-start position-absolute start-0 mt-1 ms-2 "
+            [routerLink]="['/']"
+          >
+            <i class="bi bi-arrow-left-square"></i> Torna ai prodotti
+          </button>
+          <h3 class="display-6">Dettagli Prodotto</h3>
+        </div>
+        <div class="card-body d-flex justify-content-center row">
           <div class="w-25 align-self-center">
             <img
               src="{{ chooseProduct.url }}"
@@ -32,13 +32,13 @@ import { ProductService } from '../service/product.service';
           </div>
           <div class="my-auto">
             <h5 class="card-title fs-1">{{ chooseProduct.name }}</h5>
-            <h6 class="fs-3">
+            <h6 class="fs-3 card-title">
               {{ chooseProduct.price | currency: 'EUR' }}
             </h6>
-            <p class="card-text fs-5 px-5">
+            <p class="card-text fs-4 px-5">
               {{ chooseProduct.description }}
             </p>
-            <button class="btn btn-primary" (click)="addToCart()">
+            <button class="btn btn-success btn-lg" (click)="addToCart()">
               Aggiungi al carrello
             </button>
           </div>
