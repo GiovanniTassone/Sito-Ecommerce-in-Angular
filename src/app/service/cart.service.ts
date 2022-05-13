@@ -34,6 +34,7 @@ export class CartService {
   }
 
   nextSub() {
-    this.sub.next(this.counterCart); //uso Next per inviare messaggi a un osservabile che vengono quindi inviati a tutti i componenti (observers) di quell'osservabile (observable)
+    this.sub.next(this.counterCart);
+    //uso Next per inviare messaggi a un osservabile che vengono quindi inviati a tutti i componenti (observers) di quell'osservabile (observable) ed evitare ripetizioni di codice
   }
 }
