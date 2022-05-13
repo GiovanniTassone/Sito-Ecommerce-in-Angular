@@ -31,6 +31,7 @@ export class CartService {
     this.nextSub();
   }
 
+  //gestisto la sub
   nextSub() {
     this.sub.next(this.counterCart);
   }
