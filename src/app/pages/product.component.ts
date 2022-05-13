@@ -59,31 +59,33 @@ import { ProductService } from '../service/product.service';
   styles: [],
 })
 export class ProductComponent implements OnInit {
-  chooseProductId!: number;
+  chooseProductId!: number; //variabile che mi permette di usare l'id dell'elemento molto piu comodamente
   chooseProduct!: Products;
-  loading = false;
-  correctAlert = false;
+  loading = false; //variable utilizzata per la generazione di una pagina di caricamento
+  correctAlert = false; //variable utilizzata per la generazione di un alert di corretta aggiunta al carrello
   constructor(
-    private productService: ProductService,
+    private productService: ProductService, //collego il service legato ai prodotti
     private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService //collego il service legato al carrello
   ) {}
 
   ngOnInit(): void {
-    this.chooseProductId = this.route.snapshot.params['id'];
+    this.chooseProductId = this.route.snapshot.params['id']; //associo l'Id del prodotto a un route.snapshot cos' che la rotta varia in base all'Id dell'elemento scelto
 
+    //utilizzo il metodo getProduct() del service dei prodotti, che mi ritorna un url caratterizzato dal numero dell'id del prodotto
     this.productService.getProduct(this.chooseProductId).subscribe((ris) => {
-      this.chooseProduct = ris;
-      this.loading = true;
+      this.chooseProduct = ris; //associo la risposta ottentuda
+      this.loading = true; //modifico il parametro della variabile che mi genera il caricamento della pagina
     });
   }
 
   addToCart() {
-    this.cartService.addCart(this.chooseProduct);
-    console.log(this.cartService.cartCount);
-    this.correctAlert = true;
+    this.cartService.addCart(this.chooseProduct); //richiamo il metodo addCart() dal service CartService e al suo interno passo l'elemento scelto tramite 'chooseProduct'
+
+    this.correctAlert = true; //cambio valore alla variabile che mi permette di visualizare un avviso di coretta aggiunta al carrello del prodotto
+
     setTimeout(() => {
       this.correctAlert = false;
-    }, 1500);
+    }, 1500); //dopo 1 secondo e mezzo riporto il valore della variabile in false così da far scomparire l'avviso
   }
 }

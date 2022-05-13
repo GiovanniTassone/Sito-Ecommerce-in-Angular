@@ -64,16 +64,12 @@ import { Products } from '../models/products';
               required
               class="w-100 form-control"
               #userName="ngModel"
-              [className]="
-                userName.invalid && userName.touched
-                  ? 'form-control is-invalid'
-                  : !userName.invalid && userName.touched
-                  ? 'form-control is-valid'
-                  : 'form-control'
-              "
             />
             <p *ngIf="userName.invalid && userName.touched" id="errorMessage">
-              Inserisci un Nome valido
+              <i class="bi bi-x-octagon-fill"></i> Inserisci un Nome valido
+            </p>
+            <p *ngIf="userName.valid" id="correctInput">
+              <i class="bi bi-check-circle-fill"></i> Campo Valido
             </p>
           </div>
           <div class="col-6">
@@ -86,19 +82,15 @@ import { Products } from '../models/products';
               required
               class="w-100 form-control"
               #userSurname="ngModel"
-              [className]="
-                userSurname.invalid && userSurname.touched
-                  ? 'form-control is-invalid'
-                  : !userSurname.invalid && userSurname.touched
-                  ? 'form-control is-valid'
-                  : 'form-control'
-              "
             />
             <p
               *ngIf="userSurname.invalid && userSurname.touched"
               id="errorMessage"
             >
-              Inserisci un Cognome valido
+              <i class="bi bi-x-octagon-fill"></i> Inserisci un Cognome valido
+            </p>
+            <p *ngIf="userSurname.valid" id="correctInput">
+              <i class="bi bi-check-circle-fill"></i> Campo Valido
             </p>
           </div>
         </div>
@@ -113,16 +105,12 @@ import { Products } from '../models/products';
             email
             class="w-100 form-control"
             #userEmail="ngModel"
-            [className]="
-              userEmail.invalid && userEmail.touched
-                ? 'form-control is-invalid'
-                : !userEmail.invalid && userEmail.touched
-                ? 'form-control is-valid'
-                : 'form-control'
-            "
           />
           <p *ngIf="userEmail.invalid && userEmail.touched" id="errorMessage">
-            Inserisci un Email valida
+            <i class="bi bi-x-octagon-fill"></i> Inserisci un Email valida
+          </p>
+          <p *ngIf="userEmail.valid" id="correctInput">
+            <i class="bi bi-check-circle-fill"></i> Campo Valido
           </p>
         </div>
         <div class="form-group mt-3">
@@ -135,16 +123,12 @@ import { Products } from '../models/products';
             class="w-100 form-control"
             required
             #userAddres="ngModel"
-            [className]="
-              userAddres.invalid && userAddres.touched
-                ? 'form-control is-invalid'
-                : !userAddres.invalid && userAddres.touched
-                ? 'form-control is-valid'
-                : 'form-control'
-            "
           />
           <p *ngIf="userAddres.invalid && userAddres.touched" id="errorMessage">
-            Inserisci un Indirizzo valida
+            <i class="bi bi-x-octagon-fill"></i> Inserisci un Indirizzo valida
+          </p>
+          <p *ngIf="userAddres.valid" id="correctInput">
+            <i class="bi bi-check-circle-fill"></i> Campo Valido
           </p>
         </div>
         <div class="text-center">
@@ -178,36 +162,45 @@ import { Products } from '../models/products';
         color: red;
         margin-bottom: 0.3em;
       }
+      #correctInput {
+        color: green;
+        margin-bottom: 0.3em;
+      }
       input.ng-invalid.ng-touched {
         border: 1px solid red;
+      }
+      input.ng-valid {
+        border: 1px solid green;
       }
     `,
   ],
 })
 export class CartComponent implements OnInit {
-  productsGroupCart!: Products[];
-  finalAmount = 0;
-  purcaseMade = false;
+  productsGroupCart!: Products[]; //array dei prodotti all'interno del carrello
+  finalAmount = 0; //costo dell'intero carrello finale
+  purcaseMade = false; //variabile che mi consente di rendere visibile un messaggio di conferma dell'acquisto
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.productsGroupCart = this.cartService.cartCount;
+    this.productsGroupCart = this.cartService.cartCount; //associo l'array del carrello allo stesso array del service
     for (let i = 0; i < this.productsGroupCart.length; i++) {
       this.finalAmount += this.productsGroupCart[i].price;
-    }
+    } //creo un ciclo for che mi permette di aumentare il valore del carrello finale in base al prezzo degli elementi presenti nel carrello
   }
 
+  //metodo usato all'invio del form
   submitForm(form: any) {
-    this.cartService.clearCart();
-    this.purcaseMade = true;
+    this.cartService.clearCart(); //utilizzo il metodo clearCart() del cartService, che azzera il contentuto dell'array dei prodotti
+    this.purcaseMade = true; //cambio il valore della variabile che mi mostrama il messaggio di conferma dell'acquisto
   }
 
+  //metodo richiamato in fase di rimozione di un singolo elemento dal carrello
   cancelCartItem(id: number) {
-    this.cartService.removeCartItem(id);
-    this.finalAmount = 0;
+    this.cartService.removeCartItem(id); //rimuove l'elemento associato all'id clickato
+    this.finalAmount = 0; //riazzero costo dell'intero carrello finale
     for (let i = 0; i < this.productsGroupCart.length; i++) {
       this.finalAmount += this.productsGroupCart[i].price;
-    }
+    } //mostro la somma solamente degli elementi presenti nel carrello dopo la rimozione
   }
 }

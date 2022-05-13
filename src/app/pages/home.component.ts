@@ -32,14 +32,15 @@ import { ProductService } from '../service/product.service';
   styles: [],
 })
 export class HomeComponent implements OnInit {
-  productsList: Products[] = [];
+  productsList: Products[] = []; //array dei prodotti
 
   constructor(
-    private http: HttpClient,
-    private productService: ProductService
+    private http: HttpClient, //importo HttpClient per poterr effettuare diverse chiamate multiple
+    private productService: ProductService //collego il service legato ai prodotti
   ) {}
 
   ngOnInit(): void {
     this.productService.get().subscribe((ris) => (this.productsList = ris));
+    //effettuo una subscribe per riceve la chiamata effettuata, associandola all'array dei prodtti creato all'interno di questo component
   }
 }

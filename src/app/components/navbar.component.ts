@@ -64,12 +64,13 @@ import { CartService } from '../service/cart.service';
   styles: [],
 })
 export class NavbarComponent implements OnInit {
-  counter = 0;
+  counter = 0; //contatore degli elementi del carrello
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartService.sub.subscribe((amount: number) => {
       this.counter = amount;
+      //associo la variabile contatore alla subject del cartService, che restituirà il contatore degli elementi del carrello
     });
   }
 }
