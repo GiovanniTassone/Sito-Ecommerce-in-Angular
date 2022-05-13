@@ -1,0 +1,74 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Console DDJ-200",
+      "price": 160,
+      "description": "Leggera e compatta con un lay-out di stile professionale, ti aiuterà a imparare l'arte del mixaggio e, se vorrai, a sviluppare il DJing",
+      "url" : "../../assets/img/ddj-200-top.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Console DDJ-XP2",
+      "price": 350,
+      "description": "Con la console DDJ-XP2 puoi avviare facilmente le popolari funzioni di ogni applicazione, come Hot Cues, Beat Jump e Slicer",
+      "url" : "../../assets/img/ddj-xp2-main.png"
+    },
+    {
+      "id": 3,
+      "name": "Remix Station RMX-1000",
+      "price": 720,
+      "description": "L'RMX-1000 consente un controllo intuitivo di molteplici parametri in macro. Inoltre, il software per l'editing remixbox™ consente un ampia personalizzazione dell'hardware.",
+      "url" : "../../assets/img/rmx-1000.png"
+    },
+    {
+      "id": 4,
+      "name": "Speaker XPRS",
+      "price": 1400,
+      "description": "I diffusori PA attivi della serie XPRS sono compatti e portatili eppure estremamente potenti.",
+      "url" : "../../assets/img/XPRS-speaker.png"
+    },
+    {
+      "id": 5,
+      "name": "Mixer DJM-V10",
+      "price": 3400,
+      "description": "Forgia un suono nuovo con il modello DJM-V10, un tipo di mixer innovativo, nato da idee fresche e costruito per i DJ più creativi.",
+      "url" : "../../assets/img/DJM-V10.png"
+    },
+    {
+      "id": 6,
+      "name": "Console DDJ-1000",
+      "price": 1400,
+      "description": "Approfitta al massimo delle nuove funzioni potenziate di rekordbox con la nostra console a 4 canali dedicata.",
+      "url" : "../../assets/img/ddj-1000-main-n.png"
+    },
+    {
+      "id": 7,
+      "name": "Sintetizzatore TORAIZ AS-1",
+      "price": 550,
+      "description": "Il secondo strumento musicale della gamma TORAIZ, l'AS-1, è un sintetizzatore analogico monofonico che offre nuove possibilità creative in studio come sul palco.",
+      "url" : "../../assets/img/Toraiz-as1.png"
+    },
+    {
+      "id": 8,
+      "name": "Altoparlanti DM-50D",
+      "price": 240,
+      "description": "Gli altoparlanti DM-50D offrono un suono basso equilibrato e incisivo e possono pompare potenza extra quando ne hai bisogno.",
+      "url" : "../../assets/img/DM-50D.png"
+    }
+  ],
+  "prices": [
+    {
+      "type": "1-Giorno",
+      "price": 25.99
+    },
+    {
+      "type": "2-Giorni",
+      "price": 9.99
+    },
+    {
+      "type": "5-Giorni",
+      "price": 2.99
+    }
+  ]
+}
