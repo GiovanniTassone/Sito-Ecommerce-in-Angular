@@ -34,9 +34,22 @@ import { CartService } from '../service/cart.service';
               <a
                 class="nav-link d-inline-block mt-1 fs-5"
                 aria-current="page"
-                [routerLink]="['/']"
+                [routerLink]="['homePage']"
                 ><button type="button" class="btn btn-danger fw-bold">
                   <i class="bi bi-house-door-fill"></i> Home
+                </button></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-inline-block mt-1 fs-5"
+                aria-current="page"
+                [routerLink]="['/']"
+                ><button
+                  type="button"
+                  class="btn btn-light fw-bold text-danger"
+                >
+                  <i class="bi bi-music-note"></i> Prodotti
                 </button></a
               >
             </li>
