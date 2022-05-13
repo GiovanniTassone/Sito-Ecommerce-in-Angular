@@ -9,6 +9,7 @@ import { CartComponent } from './pages/cart.component';
 import { Route, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomePageComponent } from './pages/home-page.component';
 
 const routes: Route[] = [
   {
@@ -18,6 +19,10 @@ const routes: Route[] = [
   {
     path: 'product/:id',
     component: ProductComponent,
+  },
+  {
+    path: 'homePage',
+    component: HomePageComponent,
   },
   {
     path: 'cart',
@@ -37,6 +42,7 @@ const routes: Route[] = [
     HomeComponent,
     ProductComponent,
     CartComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
