@@ -30,13 +30,14 @@ import { Products } from '../models/products';
           <div class="ms-2 me-auto">
             <div class="fw-bold">{{ product.name }}</div>
           </div>
-          <i
-            class="bi bi-trash3-fill me-3 bg-dark rounded-pill text-light"
-            (click)="cancelCartItem(i)"
-          ></i>
+
           <span class="badge bg-danger fs-6 rounded-pill">{{
             product.price | currency: 'EUR'
           }}</span>
+          <i
+            class="bi bi-trash3-fill ms-3 fs-6 bg-dark rounded-pill text-light p-1"
+            (click)="cancelCartItem(i)"
+          ></i>
         </li>
         <li
           class="list-group-item d-flex justify-content-between align-items-start bg-danger text-light"
