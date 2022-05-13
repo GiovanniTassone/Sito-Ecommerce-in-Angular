@@ -13,7 +13,7 @@ import { Products } from '../models/products';
       <p class="fs-4">
         Visita il nostro ecomerce per aggiungere prodotti al tuo carrello
       </p>
-      <button [routerLink]="['/']" class="btn btn-info fw-bold">
+      <button [routerLink]="['/']" class="btn btn-danger text-light fw-bold">
         Visita l'Ecommerce
       </button>
     </div>
@@ -151,7 +151,7 @@ import { Products } from '../models/products';
         conferma con tutte le informazioni riguardanti la spedizione e il
         tracciamento del tuo ordine!
       </p>
-      <button [routerLink]="['/']" class="btn btn-info fw-bold">
+      <button [routerLink]="['/']" class="btn btn-danger text-light fw-bold">
         Torna alla HomePage
       </button>
     </div>
