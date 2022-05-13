@@ -5,6 +5,7 @@ import { Products } from '../models/products';
 @Component({
   selector: 'app-cart',
   template: `
+    <!-- Contenuto che verrà mostrato in caso di carrello vuoto -->
     <div
       class="container-fluid w-50 mx-auto text-center mt-4"
       *ngIf="productsGroupCart.length == 0 && !purcaseMade"
@@ -17,6 +18,8 @@ import { Products } from '../models/products';
         Visita l'Ecommerce
       </button>
     </div>
+
+    <!-- Carrello e form di compilazione per procedere all'acquisto -->
     <div
       class="container-fluid w-50"
       *ngIf="!purcaseMade && productsGroupCart.length > 0"
@@ -51,6 +54,7 @@ import { Products } from '../models/products';
         </li>
       </ul>
 
+      <!-- Form di compilazione dei dati personali per procedere all'acquisto -->
       <h2 class="mt-3">Completa Ordine</h2>
       <form (ngSubmit)="submitForm(f)" #f="ngForm">
         <div class="form-group row">
@@ -146,6 +150,8 @@ import { Products } from '../models/products';
         </div>
       </form>
     </div>
+
+    <!-- Contentuto che verrà mostrato successivamente all'acquisto -->
     <div class="container-fluid w-50 text-center pt-3" *ngIf="purcaseMade">
       <img src="../../assets/dj_end.png" class="rounded-pill img-thumbnail" />
       <h2 class="fs-1">Acquisto effettuato con successo!</h2>

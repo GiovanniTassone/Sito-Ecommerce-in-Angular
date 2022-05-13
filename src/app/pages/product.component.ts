@@ -8,13 +8,16 @@ import { ProductService } from '../service/product.service';
   selector: 'app-product',
   template: `
     <div class="container text-center">
+      <!-- Contenuto che verrà mostrato in fase di caricamento della pagina -->
       <h2 *ngIf="!loading" class="mt-5">Caricamento...</h2>
       <img
         src="https://www.metronic.com/assistenza-documentazione/front/img/loader-small.gif"
         *ngIf="!loading"
       />
+      <!-- Dettagli del prodotto selezionato -->
       <div class="card mb-3 mt-5 fw-bold fs-4" *ngIf="loading">
         <div class="card-header position-relative">
+          <!-- Bottone per tornare alla lisya di prodotti -->
           <button
             class="btn btn-secondary btn-lg d-inline-block float-start position-absolute start-0 mt-1 ms-2 "
             [routerLink]="['/']"
@@ -44,6 +47,7 @@ import { ProductService } from '../service/product.service';
           </div>
         </div>
       </div>
+      <!-- Alert che avvisa l'utente della corretta aggiunte del prodotto nel carrello -->
       <div
         class="alert alert-success d-flex align-items-center"
         role="alert"

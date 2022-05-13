@@ -6,6 +6,7 @@ import { ProductService } from '../service/product.service';
 @Component({
   selector: 'app-home',
   template: `
+    <!-- Pagina dettagli del Prodotto -->
     <div
       class="row row-cols-1 row-cols-md-3 g-1 d-flex justify-content-center gap-4 mt-3 w-75 mx-auto"
     >
