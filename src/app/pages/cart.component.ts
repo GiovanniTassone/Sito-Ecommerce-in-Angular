@@ -64,6 +64,7 @@ import { Products } from '../models/products';
               required
               class="w-100 form-control"
               #userName="ngModel"
+              pattern="^[a-zA-Z]*$"
             />
             <p *ngIf="userName.invalid && userName.touched" id="errorMessage">
               <i class="bi bi-x-octagon-fill"></i> Inserisci un Nome valido
@@ -82,6 +83,7 @@ import { Products } from '../models/products';
               required
               class="w-100 form-control"
               #userSurname="ngModel"
+              pattern="^[a-zA-Z]*$"
             />
             <p
               *ngIf="userSurname.invalid && userSurname.touched"
@@ -105,6 +107,7 @@ import { Products } from '../models/products';
             email
             class="w-100 form-control"
             #userEmail="ngModel"
+            pattern="[a-zA-Z0-9]+@[a-zA-Z]+.(com|edu|net|it)"
           />
           <p *ngIf="userEmail.invalid && userEmail.touched" id="errorMessage">
             <i class="bi bi-x-octagon-fill"></i> Inserisci un Email valida
