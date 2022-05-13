@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar.component';
-import { HomeComponent } from './pages/home.component';
+import { ListComponent } from './pages/list.component';
 import { ProductComponent } from './pages/product.component';
 import { CartComponent } from './pages/cart.component';
 import { Route, RouterModule } from '@angular/router';
@@ -14,7 +14,7 @@ import { HomePageComponent } from './pages/home-page.component';
 const routes: Route[] = [
   {
     path: '',
-    component: HomeComponent,
+    component: ListComponent,
   },
   {
     path: 'product/:id',
@@ -39,7 +39,7 @@ const routes: Route[] = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
+    ListComponent,
     ProductComponent,
     CartComponent,
     HomePageComponent,

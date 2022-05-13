@@ -36,7 +36,7 @@ import { ProductService } from '../service/product.service';
   `,
   styles: [],
 })
-export class HomeComponent implements OnInit {
+export class ListComponent implements OnInit {
   productsList: Products[] = []; //array dei prodotti
 
   constructor(
