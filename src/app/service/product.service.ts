@@ -6,15 +6,21 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ProductService {
-  rootUrl = 'http://localhost:4201'; //associo la mia API ad una variabile
-  constructor(private http: HttpClient) {} //importo HttpClient per poterr effettuare diverse chiamate multiple
+  rootUrl = 'http://localhost:4201'; //I associate my API with a variable
+  constructor(private http: HttpClient) {} //HttpClient amount to be able to make multiple multiple calls
 
-  //creo un metodo get() per recuperare i dati da un server.
-  //Esso restituirà un array con al suo interno gli oggetti dell'API tipitizzandoli grazie all'interface
+  /**
+   *I create a get () method to retrieve data from a server.
+   * @returns array with API objects of thype 'Products' inside
+   */
   get() {
     return this.http.get<Products[]>(`${this.rootUrl}/products`);
   }
-  //metodo per recuperare i dati da un server di UNO specifico oggetto.
+
+  /**
+   * @param id is the ID of selected element
+   * @returns a Url with the ID number in the API Url
+   */
   getProduct(id: number) {
     return this.http.get<Products>(`${this.rootUrl}/products/${id}`);
   }

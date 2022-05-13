@@ -5,14 +5,14 @@ import { Products } from '../models/products';
 @Component({
   selector: 'app-cart',
   template: `
-    <!-- Contenuto che verrà mostrato in caso di carrello vuoto -->
+    <!-- Content that will be shown in case of an empty cart -->
     <div
       class="container-fluid w-50 mx-auto text-center mt-4"
       *ngIf="productsGroupCart.length == 0 && !purcaseMade"
     >
       <h1>Il tuo carrello è vuoto</h1>
       <p class="fs-4">
-        Visita il nostro ecomerce per aggiungere prodotti al tuo carrello
+        Visita il nostro ecommerce per aggiungere prodotti al tuo carrello
       </p>
       <button
         [routerLink]="['/productList']"
@@ -22,7 +22,7 @@ import { Products } from '../models/products';
       </button>
     </div>
 
-    <!-- Carrello e form di compilazione per procedere all'acquisto -->
+    <!-- Shopping cart and compilation form to proceed with the purchase -->
     <div
       class="container-fluid w-50"
       *ngIf="!purcaseMade && productsGroupCart.length > 0"
@@ -57,7 +57,7 @@ import { Products } from '../models/products';
         </li>
       </ul>
 
-      <!-- Form di compilazione dei dati personali per procedere all'acquisto -->
+      <!-- Form for filling in personal data to proceed with the purchase -->
       <h2 class="mt-3">Completa Ordine</h2>
       <form (ngSubmit)="submitForm(f)" #f="ngForm">
         <div class="form-group row">
@@ -135,7 +135,7 @@ import { Products } from '../models/products';
             #userAddres="ngModel"
           />
           <p *ngIf="userAddres.invalid && userAddres.touched" id="errorMessage">
-            <i class="bi bi-x-octagon-fill"></i> Inserisci un Indirizzo valida
+            <i class="bi bi-x-octagon-fill"></i> Inserisci un Indirizzo valido
           </p>
           <p *ngIf="userAddres.valid" id="correctInput">
             <i class="bi bi-check-circle-fill"></i> Campo Valido
@@ -154,7 +154,7 @@ import { Products } from '../models/products';
       </form>
     </div>
 
-    <!-- Contentuto che verrà mostrato successivamente all'acquisto -->
+    <!-- Content that will be shown after purchase -->
     <div class="container-fluid w-50 text-center pt-3" *ngIf="purcaseMade">
       <img src="../../assets/dj_end.png" class="rounded-pill img-thumbnail" />
       <h2 class="fs-1">Acquisto effettuato con successo!</h2>
@@ -188,31 +188,47 @@ import { Products } from '../models/products';
   ],
 })
 export class CartComponent implements OnInit {
-  productsGroupCart!: Products[]; //array dei prodotti all'interno del carrello
-  finalAmount = 0; //costo dell'intero carrello finale
-  purcaseMade = false; //variabile che mi consente di rendere visibile un messaggio di conferma dell'acquisto
+  productsGroupCart!: Products[]; //array of products inside the cart
+  finalAmount = 0; //final price of the whole cart
+  purcaseMade = false; //variable that allows me to make a purchase confirmation message visible
 
   constructor(private cartService: CartService) {}
 
+  /**
+   *I associate the cart array to the same array as the service
+   *and I create a for loop that allows me to increase the value of the
+    final cart based on the price of the items in the cart
+   */
   ngOnInit(): void {
-    this.productsGroupCart = this.cartService.cartCount; //associo l'array del carrello allo stesso array del service
+    this.productsGroupCart = this.cartService.cartCount;
     for (let i = 0; i < this.productsGroupCart.length; i++) {
       this.finalAmount += this.productsGroupCart[i].price;
-    } //creo un ciclo for che mi permette di aumentare il valore del carrello finale in base al prezzo degli elementi presenti nel carrello
+    }
   }
 
-  //metodo usato all'invio del form
+  /**
+   * Method used to submit the form
+   * @param form is the name of the form to submit
+   * I use the clearCart() method of the cartService,
+   * which clears the contents of the products array
+   * And I change the value of the 'this.purcaseMade' that show the purchase confirmation message
+   */
   submitForm(form: any) {
-    this.cartService.clearCart(); //utilizzo il metodo clearCart() del cartService, che azzera il contentuto dell'array dei prodotti
-    this.purcaseMade = true; //cambio il valore della variabile che mi mostrama il messaggio di conferma dell'acquisto
+    this.cartService.clearCart();
+    this.purcaseMade = true;
   }
 
-  //metodo richiamato in fase di rimozione di un singolo elemento dal carrello
+  /**
+   * Method invoked when removing a single item from the cart
+   * @param id is the ID of the selected elemento to eliminate
+   * the removeCartItem(id) removes the element associated with the clicked ID,
+   * Reset the cost of the final cart and I show the sum of the items in the cart after removal
+   */
   cancelCartItem(id: number) {
-    this.cartService.removeCartItem(id); //rimuove l'elemento associato all'id clickato
-    this.finalAmount = 0; //riazzero costo dell'intero carrello finale
+    this.cartService.removeCartItem(id);
+    this.finalAmount = 0;
     for (let i = 0; i < this.productsGroupCart.length; i++) {
       this.finalAmount += this.productsGroupCart[i].price;
-    } //mostro la somma solamente degli elementi presenti nel carrello dopo la rimozione
+    }
   }
 }

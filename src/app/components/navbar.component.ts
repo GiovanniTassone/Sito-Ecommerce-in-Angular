@@ -4,7 +4,7 @@ import { CartService } from '../service/cart.service';
 @Component({
   selector: 'app-navbar',
   template: `
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
       <div class="container-fluid">
         <svg
           height="80"
@@ -77,13 +77,15 @@ import { CartService } from '../service/cart.service';
   styles: [],
 })
 export class NavbarComponent implements OnInit {
-  counter = 0; //contatore degli elementi del carrello
+  counter = 0; //counter of element into the cart
   constructor(private cartService: CartService) {}
 
+  /**
+   * I make a subscribe that associates the variable 'this.counter' to the subject of the cartService
+   */
   ngOnInit(): void {
     this.cartService.sub.subscribe((amount: number) => {
       this.counter = amount;
-      //associo la variabile contatore alla subject del cartService, che restituirà il contatore degli elementi del carrello
     });
   }
 }

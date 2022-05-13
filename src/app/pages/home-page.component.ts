@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-home-page',
   template: `
-    <!-- HomePage del Sito -->
+    <!-- HomePage -->
     <div
       class="p-5 text-center bg-image"
       style="

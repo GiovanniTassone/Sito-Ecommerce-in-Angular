@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Products } from '../models/products';
 import { ProductService } from '../service/product.service';
@@ -6,7 +6,7 @@ import { ProductService } from '../service/product.service';
 @Component({
   selector: 'app-home',
   template: `
-    <!-- Pagina dettagli del Prodotto -->
+    <!-- Product detail page -->
     <div
       class="row row-cols-1 row-cols-md-3 g-1 d-flex justify-content-center gap-4 mt-3 w-75 mx-auto"
     >
@@ -38,15 +38,17 @@ import { ProductService } from '../service/product.service';
   styles: [],
 })
 export class ListComponent implements OnInit {
-  productsList: Products[] = []; //array dei prodotti
+  productsList: Products[] = []; //array of products
 
   constructor(
-    private http: HttpClient, //importo HttpClient per poterr effettuare diverse chiamate multiple
-    private productService: ProductService //collego il service legato ai prodotti
+    private http: HttpClient, //I import HttpClient to be able to make several multiple calls
+    private productService: ProductService //connect the 'ProductService'
   ) {}
 
+  /**
+   * I subscribe to receive the call made, associating it with the product array created within this component
+   */
   ngOnInit(): void {
     this.productService.get().subscribe((ris) => (this.productsList = ris));
-    //effettuo una subscribe per riceve la chiamata effettuata, associandola all'array dei prodtti creato all'interno di questo component
   }
 }

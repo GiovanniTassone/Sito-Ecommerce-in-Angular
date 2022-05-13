@@ -8,16 +8,16 @@ import { ProductService } from '../service/product.service';
   selector: 'app-product',
   template: `
     <div class="container text-center">
-      <!-- Contenuto che verrà mostrato in fase di caricamento della pagina -->
+      <!-- Content that will be shown when the page is loaded -->
       <h2 *ngIf="!loading" class="mt-5">Caricamento...</h2>
       <img
         src="https://www.metronic.com/assistenza-documentazione/front/img/loader-small.gif"
         *ngIf="!loading"
       />
-      <!-- Dettagli del prodotto selezionato -->
+      <!-- Details of the selected product -->
       <div class="card mb-3 mt-5 fw-bold fs-4" *ngIf="loading">
         <div class="card-header position-relative">
-          <!-- Bottone per tornare alla lisya di prodotti -->
+          <!-- Button to return to the product list -->
           <button
             class="btn btn-secondary btn-lg d-inline-block float-start position-absolute start-0 mt-1 ms-2 "
             [routerLink]="['/productList']"
@@ -47,7 +47,7 @@ import { ProductService } from '../service/product.service';
           </div>
         </div>
       </div>
-      <!-- Alert che avvisa l'utente della corretta aggiunte del prodotto nel carrello -->
+      <!-- Alert that warns the user of the correct addition of the product in the cart -->
       <div
         class="alert alert-success d-flex align-items-center"
         role="alert"
@@ -63,33 +63,40 @@ import { ProductService } from '../service/product.service';
   styles: [],
 })
 export class ProductComponent implements OnInit {
-  chooseProductId!: number; //variabile che mi permette di usare l'id dell'elemento molto piu comodamente
+  chooseProductId!: number; //variable which allows me to use the element's id much more freely
   chooseProduct!: Products;
-  loading = false; //variable utilizzata per la generazione di una pagina di caricamento
-  correctAlert = false; //variable utilizzata per la generazione di un alert di corretta aggiunta al carrello
+  loading = false; //variable used for generating a load page
+  correctAlert = false; //variable used to generate an alert for a successful addition of element into the cart
   constructor(
-    private productService: ProductService, //collego il service legato ai prodotti
+    private productService: ProductService, //connect the 'ProductService'
     private route: ActivatedRoute,
-    private cartService: CartService //collego il service legato al carrello
+    private cartService: CartService //connect the 'CartService'
   ) {}
 
+  /**
+   * I associate the product Id with route.snapshot so that the route varies according to the Id of the chosen element
+   * I use the getProduct() method of the 'ProductService', which returns me a url characterized by the product id number
+   * and I associate the answer obtained
+   * I modify the parameter of 'loading' which generates the loading of the page
+   */
   ngOnInit(): void {
-    this.chooseProductId = this.route.snapshot.params['id']; //associo l'Id del prodotto a un route.snapshot cos' che la rotta varia in base all'Id dell'elemento scelto
-
-    //utilizzo il metodo getProduct() del service dei prodotti, che mi ritorna un url caratterizzato dal numero dell'id del prodotto
+    this.chooseProductId = this.route.snapshot.params['id'];
     this.productService.getProduct(this.chooseProductId).subscribe((ris) => {
-      this.chooseProduct = ris; //associo la risposta ottentuda
-      this.loading = true; //modifico il parametro della variabile che mi genera il caricamento della pagina
+      this.chooseProduct = ris;
+      this.loading = true;
     });
   }
 
+  /**
+   *Call the addCart () method from the CartService service and inside it, I pass the chosen element through 'chooseProduct'
+   *Change value of 'correctAlert', that allows me to display a notice of correct added to the product cart
+   *After 1 and a half seconds I return the value of the variable to false so as to make the alert disappear
+   */
   addToCart() {
-    this.cartService.addCart(this.chooseProduct); //richiamo il metodo addCart() dal service CartService e al suo interno passo l'elemento scelto tramite 'chooseProduct'
-
-    this.correctAlert = true; //cambio valore alla variabile che mi permette di visualizare un avviso di coretta aggiunta al carrello del prodotto
-
+    this.cartService.addCart(this.chooseProduct);
+    this.correctAlert = true;
     setTimeout(() => {
       this.correctAlert = false;
-    }, 1500); //dopo 1 secondo e mezzo riporto il valore della variabile in false così da far scomparire l'avviso
+    }, 1500);
   }
 }
