@@ -33,7 +33,7 @@ import { Component, OnInit } from '@angular/core';
             </h4>
             <button
               class="btn btn-outline-danger btn-lg mt-5"
-              [routerLink]="['/']"
+              [routerLink]="['/productList']"
             >
               Visita lo Shop
             </button>

@@ -34,7 +34,7 @@ import { CartService } from '../service/cart.service';
               <a
                 class="nav-link d-inline-block mt-1 fs-5"
                 aria-current="page"
-                [routerLink]="['homePage']"
+                [routerLink]="['/']"
                 ><button type="button" class="btn btn-danger fw-bold">
                   <i class="bi bi-house-door-fill"></i> Home
                 </button></a
@@ -44,7 +44,7 @@ import { CartService } from '../service/cart.service';
               <a
                 class="nav-link d-inline-block mt-1 fs-5"
                 aria-current="page"
-                [routerLink]="['/']"
+                [routerLink]="['/productList']"
                 ><button
                   type="button"
                   class="btn btn-light fw-bold text-danger"

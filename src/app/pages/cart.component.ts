@@ -14,7 +14,10 @@ import { Products } from '../models/products';
       <p class="fs-4">
         Visita il nostro ecomerce per aggiungere prodotti al tuo carrello
       </p>
-      <button [routerLink]="['/']" class="btn btn-danger text-light fw-bold">
+      <button
+        [routerLink]="['/productList']"
+        class="btn btn-danger text-light fw-bold"
+      >
         Visita l'Ecommerce
       </button>
     </div>

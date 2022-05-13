@@ -14,15 +14,15 @@ import { HomePageComponent } from './pages/home-page.component';
 const routes: Route[] = [
   {
     path: '',
-    component: ListComponent,
+    component: HomePageComponent,
   },
   {
     path: 'product/:id',
     component: ProductComponent,
   },
   {
-    path: 'homePage',
-    component: HomePageComponent,
+    path: 'productList',
+    component: ListComponent,
   },
   {
     path: 'cart',

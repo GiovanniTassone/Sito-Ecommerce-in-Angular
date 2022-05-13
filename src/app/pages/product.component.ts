@@ -20,7 +20,7 @@ import { ProductService } from '../service/product.service';
           <!-- Bottone per tornare alla lisya di prodotti -->
           <button
             class="btn btn-secondary btn-lg d-inline-block float-start position-absolute start-0 mt-1 ms-2 "
-            [routerLink]="['/']"
+            [routerLink]="['/productList']"
           >
             <i class="bi bi-arrow-left-square"></i> Torna ai prodotti
           </button>
