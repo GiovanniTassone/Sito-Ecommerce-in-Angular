@@ -8,7 +8,7 @@ import { ProductService } from '../service/product.service';
   template: `
     <!-- Product detail page -->
     <div
-      class="row row-cols-1 row-cols-md-3 g-1 d-flex justify-content-center gap-4 mt-3 w-75 mx-auto"
+      class="row g-1 d-flex justify-content-center gap-4 mt-3 w-75 mx-auto px-5"
     >
       <div
         class="card d-flex align-items-between"
